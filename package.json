@@ -3,7 +3,7 @@
   "productName": "HelloMikko",
   "version": "1.0.0",
   "description": "A Google like search but only with smarter answers",
-  "main": "src/index.js",
+  "main": "src/gas.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
