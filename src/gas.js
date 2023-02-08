@@ -1,39 +1,120 @@
+// const { app, BrowserWindow } = require('electron');
+// const path = require('path');
+
+// if (require('electron-squirrel-startup')) {
+//   app.quit();
+// }
+
+// const createWindow = () => {
+//   const mainWindow = new BrowserWindow({
+//     width: 860,
+//     height: 680,
+//     frame: false,
+//     resizable: true,
+//     autoHideMenuBar: true,
+//     show: false,
+//     webPreferences: {
+//       preload: path.join(__dirname, 'preload.js'),
+//     },
+//   });
+
+//   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+//   mainWindow.once('ready-to-show', () => {
+//     mainWindow.show();
+//   });
+// };
+
+// app.on('ready', createWindow);
+
+// app.on('window-all-closed', () => {
+//   if (process.platform !== 'darwin') {
+//     app.quit();
+//   }
+// });
+
+// app.on('activate', () => {
+//   if (BrowserWindow.getAllWindows().length === 0) {
+//     createWindow();
+//   }
+// });
+// @ts-nocheck
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
+const packageJson = require('./package.json');
+const fs = require("fs");
 
-if (require('electron-squirrel-startup')) {
-  app.quit();
-}
+let mainWindow;
 
-const createWindow = () => {
-  const mainWindow = new BrowserWindow({
+function createWindow() {
+  mainWindow = new BrowserWindow({
     width: 860,
     height: 680,
-    frame: false,
-    resizable: true,
-    autoHideMenuBar: true,
-    show: false,
+    resizable: false,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-    },
+      nodeIntegration: true
+    }
   });
 
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  mainWindow.once('ready-to-show', () => {
-    mainWindow.show();
+  fs.readFile('./src/index.html', 'utf8', function (err, data) {
+    if (err) throw err;
+
+    // Disable dev tools
+    mainWindow.webContents.closeDevTools();
+    // Remove the menu bar
+    mainWindow.setMenu(null);
+    // Set menu bar visibility to false
+    mainWindow.setMenuBarVisibility(false);
+
+    mainWindow.on('closed', function () {
+      mainWindow = null
+    });
+
+    // find the span element with the id "version" and update its text content
+    const updatedData = data.replace(/<span id="version">.*<\/span>/, `<span id="version">${packageJson.version}</span>`);
+
+    // write the updated index.html file
+    fs.writeFileSync('./app/index.html', updatedData, function (err) {
+      if (err) throw err;
+      console.log('Version number updated in index.html');
+    });
+
+    // Load the updated index.html file
+    mainWindow.loadFile('./app/index.html');
   });
-};
+}
 
 app.on('ready', createWindow);
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit();
 });
 
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+app.on('activate', function () {
+  if (mainWindow === null) createWindow();
 });
+
+app.on('browser-window-created', (event, window) => {
+  // Disable dev tools
+  window.webContents.closeDevTools();
+  // Remove the menu bar
+  window.setMenu(null);
+  // Set menu bar visibility to false
+  window.setMenuBarVisibility(false);
+});
+
+// update the version number in the package.json file
+packageJson.version = process.env.npm_package_version;
+
+// write the updated packageJson object to the package.json file
+fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2), function (err) {
+  if (err) throw err;
+  console.log('Version number updated in package.json');
+});
+
+(function () {
+  async function myFunction() {
+    const forgeConfig = await import('/forge.config.cjs');
+    // use forgeConfig here
+  }
+
+  myFunction();
+})();

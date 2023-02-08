@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-  </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>HelloMikko</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"
+    integrity="sha384-HFtR+Vvb1zS5L70x9MUhqbBV/kq9ihHY6UHJjslmqqs/hLGTy2/NHD/LwFCE6ZgT" crossorigin="anonymous" />
+  <link href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/tailwindui@latest/dist/tailwind-ui.min.css" rel="stylesheet" />
+  <style>
+    /* Add any custom styles here */
+  </style>
+</head>
+
+<body class="bg-gray-200">
+<body class="antialiased font-sans bg-gray-100">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold text-center text-gray-800">💖 Hello World!</h1>
+        <p class="text-center text-gray-600">Welcome to your Electron application.</p>
+        <p class="text-center text-gray-600" id="version-display"></p>
+    </div>
+</body>
+<script src="oil.js"></script>
 </html>
