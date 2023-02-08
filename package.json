@@ -1,7 +1,7 @@
 {
   "name": "hellomikko",
   "productName": "HelloMikko",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "A Google like search but only with smarter answers",
   "main": "src/gas.js",
   "scripts": {
@@ -37,6 +37,6 @@
     "@electron-forge/maker-rpm": "^6.0.5",
     "@electron-forge/maker-squirrel": "^6.0.5",
     "@electron-forge/maker-zip": "^6.0.5",
-    "electron": "23.0.0"
+    "electron": "^23.0.0"
   }
 }
