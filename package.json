@@ -11,9 +11,20 @@
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BraXon-Devs/HelloMikko.git",
+    "homepage": "https://github.com/BraXon-Devs/HelloMikko#readme",
+    "issues": "https://github.com/BraXon-Devs/HelloMikko/issues"
+  },
+  "keywords": [
+    "search",
+    "engine",
+    "search-engine",
+    "ai"
+  ],
   "author": {
-    "name": "Michael",
+    "name": "Mikko",
     "email": "hellomikko@outlook.com"
   },
   "license": "MIT",
