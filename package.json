@@ -1,8 +1,8 @@
 {
-  "name": "applications",
-  "productName": "applications",
+  "name": "hellomikko",
+  "productName": "HelloMikko",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A Google like search but only with smarter answers",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
