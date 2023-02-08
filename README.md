@@ -18,14 +18,14 @@ HelloMikko is an open source project created by BraXon-Devs. A Google like searc
 
 ## Features
 
-* Send and receive text messages
+* Search like you normally would on any other search websites
 * User-friendly design
 * Fast and reliable
 * Cross-platform support
 
 ## Usage
 
-To get started with HelloMikko, you'll need to sign up for an account. Once your account is set up, you can start sending and receiving text messages.
+To get started with HelloMikko, enter anything you want to search for.
 
 ## Contributing
 
