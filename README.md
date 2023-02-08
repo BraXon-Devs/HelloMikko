@@ -1,6 +1,6 @@
 # HelloMikko
 
-[About](#About) | [Installation](#Installation) | [Features](#Features) | [Usage](#Usage) | [Contributing](#Contributing) | [License](#License)
+[About](#About) | [Features](#Features) | [Usage](#Usage) | [Contributing](#Contributing) | [License](#License)
 
 ## About
 
